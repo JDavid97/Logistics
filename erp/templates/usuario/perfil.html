@@ -1,0 +1,66 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block perfil %}
+
+    <div>
+        <h3>Nombre: {{usuario.nombres}}</h3>
+        <h3 class="numEmpleado">Codigo Empleado: {{usuario.numeroempleado}}</h3>
+        <br>
+            <div class="masinfo">
+                    <img src="{% static 'img/F1.jpg' %}" height="">
+                <div class="info2">
+                    <h4 cla>{{usuario.cargo}}</h4>
+                    <br>
+                    <h4 cla>Zona: {{usuario.zona}}</h4>
+                    <br>
+                    <h4>{{usuario.municipio}}, {{usuario.departamento}}</h4>
+                    <br>
+                    <div class="info3">
+                        <h3>{{usuario.ventas_anteriores}}</h3>
+                    </div>
+                </div>                
+            </div>   
+            <br>
+            <br>
+            <h3>Teléfono: {{usuario.celular}}</h3>
+            <h3>Email: {{usuario.email}}</h3>
+            <br>
+            <h3>Fecha de Nacimiento: {{usuario.fecha_nacimiento}}</h3>
+            <h3>Cédula: {{usuario.cedula}}</h3>
+            <br>
+            <h3>Fecha de Ingreso: {{usuario.fecha_Ingreso}}</h3>
+            <h3>Jefe: {{usuario.imagen}}</h3>
+            <br>
+
+        <h1 class="subalternos">Subalternos</h1>  
+
+        <div class="tablasub">
+            <table class="table" id="data">
+                <div>
+                    <thead>
+                        <tr>
+                            <th">Nombre</th>
+                            <th">Ventas</th>
+                        </tr>
+                    </thead>
+                </div>
+
+                <div>
+                    <tbody>
+                        {% for subalterno in usuario.subalternos %}
+                        <tr>
+                            <td class="enlacesubalterno">
+                                <a href="{% url 'erp:home' %}{{subalterno.cedula}}">{{subalterno.nombres}}</a>
+                            </td>
+                            <td>{{subalterno.ventas_anteriores}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </div>
+            </table> 
+        </div>       
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,84 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.contenedor {
+    position: relative;
+    margin: auto;
+    width: 30%;
+    height: auto;
+    border: 3px solid black;
+}
+
+.body {
+    padding: 15px;
+}
+
+.header {
+    background-color: black;
+    color: rgb(206, 102, 33);
+}
+
+.tituloperfil {
+    color: rgb(191, 193, 195);
+}
+
+.masinfo {
+    display: inline-flex;
+}
+
+.info2 {
+    padding: 10px;
+    margin-left: 8%;
+}
+
+.info3 {
+    color: white;
+    background-color: rgb(15, 155, 69);
+}
+
+img {
+    height: 20%;
+    width: 35%;
+    
+}
+
+.numEmpleado {
+    color: rgb(191, 193, 195);
+}
+
+.tablasub {
+    border: 3px solid black;
+}
+
+.subalternos {
+    font-size: 20px;
+    text-decoration-line: underline;
+}
+
+.col1 {
+    border: 3px solid black;
+}
+
+.col-lg-2 {
+    font-size: 20px;
+}
+
+#col-md-2 {
+    font-size: 70px;
+}
+
+#col-sm-3 {
+    font-size: 10px;
+}
+
+#col-xs {
+    font-size: 10px;
+}
+
+#col-xs-12 {
+    font-size: 10px;
+}
