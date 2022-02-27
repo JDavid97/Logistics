@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.contenedor{
+    position: relative;
+    margin: auto;
+    width: 30%;
+    height: auto;
+    border: 3px solid black;
+}
+
+.logo {
+    height: 10%;
+    width: 10%; 
+}

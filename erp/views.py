@@ -12,7 +12,7 @@ class UsuarioView(View):
         if 'cedula_empleado' in kwargs:
             cedula_empleado: int = kwargs['cedula_empleado']
         else:
-            cedula_empleado = 345345
+            cedula_empleado = 123123
 
         context ={}
         context["usuario"] = Usuario.objects.get(cedula=cedula_empleado)
