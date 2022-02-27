@@ -23,8 +23,14 @@
     color: rgb(206, 102, 33); 
 }
 
+.header1 {
+    display: inline-flex;
+}
+
 .logout {
     color: white;
+    font-size: 20px;
+    margin-left: 160%;
 }
 
 .tituloperfil {
@@ -54,12 +60,29 @@ img {
     color: rgb(191, 193, 195);
 }
 
-.tablasub {
-    border: 3px solid black;
+table {
+    width: 100%;
+    border: 1px solid #000;
 }
 
+th, td {
+    width: 25%;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+    border-spacing: 0;
+ }
+
+ caption {
+    padding: 0.3em;
+ }
+
 .subalternos {
-    font-size: 20px;
+    font-size: 15px;
+    text-decoration-line: underline;
+}
+
+.enlacesubalterno {
     text-decoration-line: underline;
 }
 
@@ -69,6 +92,7 @@ img {
 
 .col-lg-2 {
     font-size: 20px;
+    margin-left: 15px;
 }
 
 #col-md-2 {

@@ -123,6 +123,8 @@ LOGIN_REDIRECT_URL = 'core/'
 
 LOGOUT_REDIRECT_URL = '/login/'
 
+AUTH_USER_MODEL = 'erp.Usuario'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

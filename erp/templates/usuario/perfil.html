@@ -8,7 +8,7 @@
         <h3 class="numEmpleado">Codigo Empleado: {{usuario.numeroempleado}}</h3>
         <br>
             <div class="masinfo">
-                    <img src="{% static 'img/F1.jpg' %}" height="">
+                    <img src="/static/img/{{usuario.imagen}}" height="">
                 <div class="info2">
                     <h4 cla>{{usuario.cargo}}</h4>
                     <br>
@@ -30,36 +30,45 @@
             <h3>Cédula: {{usuario.cedula}}</h3>
             <br>
             <h3>Fecha de Ingreso: {{usuario.fecha_Ingreso}}</h3>
-            <h3>Jefe: {{usuario.imagen}}</h3>
+            <h3>Dos jefes: {{ mostrarjefe }}</h3>
+
+            {% if jefe %}
+                {% if mostrarjefe %}  
+                    <h3>Jefe: <a class="subalternos" href="{% url 'erp:home' %}{{jefe.cedula}}">{{jefe.nombres}}</a></h3>                                                     
+                {% else %}    
+                    <h3>Jefe: {{jefe.nombres}}</h3>     
+                {% endif %}                               
+            {% else %}
+                <h3>Jefe: No tiene</h3>                
+            {% endif %}
+
             <br>
 
-        <h1 class="subalternos">Subalternos</h1>  
+        {% if subalternos %}     
+            <h1 class="subalternos">Subalternos</h1>  
+            <br>
 
-        <div class="tablasub">
-            <table class="table" id="data">
-                <div>
-                    <thead>
-                        <tr>
-                            <th">Nombre</th>
-                            <th">Ventas</th>
-                        </tr>
-                    </thead>
-                </div>
-
-                <div>
-                    <tbody>
-                        {% for subalterno in usuario.subalternos %}
-                        <tr>
-                            <td class="enlacesubalterno">
-                                <a href="{% url 'erp:home' %}{{subalterno.cedula}}">{{subalterno.nombres}}</a>
-                            </td>
-                            <td>{{subalterno.ventas_anteriores}}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </div>
-            </table> 
-        </div>       
+            <div class="tablasub">
+                <table class="table" id="data">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Ventas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for subalterno in subalternos %}
+                                <tr>
+                                    <td class="enlacesubalterno">
+                                        <a a class="subalternos" href="{% url 'erp:home' %}{{subalterno.cedula}}">{{subalterno.nombres}}</a>
+                                    </td>
+                                    <td>$ {{subalterno.ventas_anteriores}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                </table> 
+            </div>       
+        {% endif %}
     </div>
 
 {% endblock %}
