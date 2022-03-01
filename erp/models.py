@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.hashers import make_password
 from datetime import datetime
 
 # Create your models here.
@@ -18,7 +19,7 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, date_of_birth, password=None):
+    def create_superuser(self, email, date_of_birth, password):
 
         user = self.create_user(
             email,
@@ -62,6 +63,10 @@ class Usuario(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['date_of_birth']
+
+    def before_import_row(self,row, **kwargs):
+        self.password = row['password']
+        row['password'] = make_password(self.password)
 
     def __str__(self):
         return self.email

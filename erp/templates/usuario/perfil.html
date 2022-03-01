@@ -4,48 +4,54 @@
 {% block perfil %}
 
     <div>
-        <h3>Nombre: {{usuario.nombres}}</h3>
-        <h3 class="numEmpleado">Codigo Empleado: {{usuario.numeroempleado}}</h3>
+        <h3>{{usuario.nombres}} {{usuario.apellido_uno}} {{usuario.apellido_dos}}</h3>
+        <h3 class="numEmpleado">{{usuario.numeroempleado}}</h3>
         <br>
             <div class="masinfo">
                     <img src="/static/img/{{usuario.imagen}}" height="">
                 <div class="info2">
                     <h4 cla>{{usuario.cargo}}</h4>
                     <br>
-                    <h4 cla>Zona: {{usuario.zona}}</h4>
+                    <h4 cla>{{usuario.zona}}</h4>
                     <br>
                     <h4>{{usuario.municipio}}, {{usuario.departamento}}</h4>
                     <br>
-                    <div class="info3">
-                        <h3>{{usuario.ventas_anteriores}}</h3>
-                    </div>
+
+                    {% if usuario.cargo == 'Ejecutivo Comercial' %}
+                        <div class="info3">                        
+                                <h3>${{usuario.ventas_anteriores}}</h3>                            
+                        </div>
+                    {% elif subalternos %}                           
+                        <div class="info3">                                  
+                            <h3>${{ventas_subalternos}}</h3>                            
+                        </div>
+                    {% else %}                                                
+                    {% endif %}
                 </div>                
             </div>   
+            <br><br>            
+            <h4>Teléfono: {{usuario.celular}}</h4>
+            <h4>Email: {{usuario.email}}</h4>
             <br>
+            <h4>Fecha de Nacimiento: {{usuario.fecha_nacimiento}}</h4>
+            <h4>Cédula: {{usuario.cedula}}</h4>
             <br>
-            <h3>Teléfono: {{usuario.celular}}</h3>
-            <h3>Email: {{usuario.email}}</h3>
-            <br>
-            <h3>Fecha de Nacimiento: {{usuario.fecha_nacimiento}}</h3>
-            <h3>Cédula: {{usuario.cedula}}</h3>
-            <br>
-            <h3>Fecha de Ingreso: {{usuario.fecha_Ingreso}}</h3>
-            <h3>Dos jefes: {{ mostrarjefe }}</h3>
+            <h4>Fecha de Ingreso: {{usuario.fecha_Ingreso}}</h4>            
 
             {% if jefe %}
                 {% if mostrarjefe %}  
-                    <h3>Jefe: <a class="subalternos" href="{% url 'erp:home' %}{{jefe.cedula}}">{{jefe.nombres}}</a></h3>                                                     
+                    <h4>Jefe: <a class="enlacesubalterno" href="{% url 'erp:home' %}{{jefe.numeroempleado}}">{{jefe.nombres}} {{jefe.apellido_uno}}</a></h4>                                                     
                 {% else %}    
-                    <h3>Jefe: {{jefe.nombres}}</h3>     
+                    <h4>Jefe: {{jefe.nombres}} {{jefe.apellido_uno}}</h4>     
                 {% endif %}                               
             {% else %}
-                <h3>Jefe: No tiene</h3>                
+                <h4>Jefe: No tiene</h4>                
             {% endif %}
 
             <br>
 
         {% if subalternos %}     
-            <h1 class="subalternos">Subalternos</h1>  
+            <h2 class="subalternos">Subalternos</h2>  
             <br>
 
             <div class="tablasub">
@@ -60,7 +66,7 @@
                             {% for subalterno in subalternos %}
                                 <tr>
                                     <td class="enlacesubalterno">
-                                        <a a class="subalternos" href="{% url 'erp:home' %}{{subalterno.cedula}}">{{subalterno.nombres}}</a>
+                                        <a a class="enlacesubalterno" href="{% url 'erp:home' %}{{subalterno.numeroempleado}}">{{subalterno.nombres}} {{subalterno.apellido_uno}}</a>
                                     </td>
                                     <td>$ {{subalterno.ventas_anteriores}}</td>
                                 </tr>
