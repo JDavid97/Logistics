@@ -22,9 +22,12 @@
                                 <h3>${{usuario.ventas_anteriores}}</h3>                            
                         </div>
                     {% elif subalternos %}                           
-                        <div class="info3">                                  
-                            <h3>${{ventas_subalternos}}</h3>                            
+                        {% if ventas_subalternos %}                                   
+                        <div class="info3"> 
+                            <h3>${{ventas_subalternos}}</h3>                                                                                           
                         </div>
+                        {% else %}                                       
+                        {% endif %}
                     {% else %}                                                
                     {% endif %}
                 </div>                

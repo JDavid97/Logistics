@@ -44,7 +44,6 @@ class Usuario(AbstractBaseUser):
     municipio = models.CharField(max_length=50, verbose_name='Municipio', null=True)
     departamento = models.CharField(max_length=50, verbose_name='Departamento', null=True)
     ventas_anteriores = models.CharField(max_length=50, verbose_name='Ventas', null=True)
-    
     contraseña = models.CharField(max_length=50, verbose_name='Contraseña', null=True)
     imagen = models.CharField(max_length=50, verbose_name='Imagen', null=True)
     celular = models.CharField(max_length=50, verbose_name='Celular', null=True)

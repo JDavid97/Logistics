@@ -1,4 +1,6 @@
 from erp.models import Usuario
+
+#Niveles de los cargos para ver si un usuario puede entrar al perfil de su jefe
 cargos = {
             "Gerente Regional": 1,
             "Subgerente Regional": 2,

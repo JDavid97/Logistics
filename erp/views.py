@@ -9,6 +9,7 @@ from erp.services import is_show_jefe, is_permission
 
 # Create your views here.
 
+#Se mandan datos del usuario logueado
 class UsuarioView(View):    
     def get(self, request, *args, **kwargs):
         if 'cedula_empleado' in kwargs:
@@ -17,17 +18,14 @@ class UsuarioView(View):
 
         else:
             usuario = request.user
-
         context ={}
-
         context["usuario"] = usuario
         if context["usuario"].jefe:
             context["jefe"] = Usuario.objects.get(numeroempleado=usuario.jefe)
             context["mostrarjefe"] = is_show_jefe(request.user, context["jefe"])
         context["subalternos"] = Usuario.objects.filter(jefe=usuario.numeroempleado)
         
-        ventas_subalternos = 0
-    
+        ventas_subalternos = 0   
         for c in context["subalternos"]:
             if c.ventas_anteriores:
                 ventas_subalternos += int(c.ventas_anteriores)            
