@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-9zs)!kd0s_n=4)_--(u=1@rjbwy=4w2qb#84%hdhjz(l4s@nhv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["su-logistics.herokuapp.com"]
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'logistics1',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'postgres://ztptwxdtrlthrw:3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d71gt1lgirpqta',
         'PORT': ''
     }
 }

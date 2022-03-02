@@ -9,7 +9,7 @@ from erp.services import is_show_jefe, is_permission
 
 # Create your views here.
 
-#Se mandan datos del usuario logueado
+#Se mandan datos del usuario logueado como sus datos, su jefe y sus subalternos
 class UsuarioView(View):    
     def get(self, request, *args, **kwargs):
         if 'cedula_empleado' in kwargs:
