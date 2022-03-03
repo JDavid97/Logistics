@@ -14,9 +14,19 @@ from pathlib import Path
 import os
 
 from django.urls import reverse_lazy
+from dotenv import load_dotenv
+import dj_database_url
+import django_heroku
+import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    load_dotenv(encoding='utf8')
+    load_dotenv(dotenv_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,7 +39,7 @@ SECRET_KEY = 'django-insecure-9zs)!kd0s_n=4)_--(u=1@rjbwy=4w2qb#84%hdhjz(l4s@nhv
 DEBUG = True
 
 ALLOWED_HOSTS = ["su-logistics.herokuapp.com"]
-
+#"su-logistics.herokuapp.com"
 
 # Application definition
 
@@ -40,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
     'erp'
 ]
 
@@ -78,14 +89,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd71gt1lgirpqta',
+        'USER': 'ztptwxdtrlthrw',
+        'PASSWORD': '3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083',
+        'HOST': '    postgres://ztptwxdtrlthrw:3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d71gt1lgirpqta',
+        'PORT': '5432'
+    }
+}
+
+"""DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'logistics1',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'postgres://ztptwxdtrlthrw:3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d71gt1lgirpqta',
+        'HOST': 'localhost',
         'PORT': ''
     }
-}
+}"""
+
+"""DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)"""
 
 
 # Password validation
@@ -140,6 +165,10 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTH_USER_MODEL = 'erp.Usuario'
+
+django_heroku.settings(locals())
+options = DATABASES['default'].get('OPTIONS', {})
+options.pop('sslmode', None)
 
 
 
