@@ -2,10 +2,9 @@ from pyexpat import model
 from tokenize import Double
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
 from erp.models import Usuario
-from .serializer import UserSerializer
 from erp.services import is_show_jefe, is_permission
+from erp.services import get_total_sales
 
 # Create your views here.
 
@@ -23,15 +22,21 @@ class UsuarioView(View):
         if context["usuario"].jefe:
             context["jefe"] = Usuario.objects.get(numeroempleado=usuario.jefe)
             context["mostrarjefe"] = is_show_jefe(request.user, context["jefe"])
-        context["subalternos"] = Usuario.objects.filter(jefe=usuario.numeroempleado)
+        # context["subalternos"] = Usuario.objects.filter(jefe=usuario.numeroempleado)
+        subalternos = Usuario.objects.filter(jefe=usuario.numeroempleado)
+
+
         
         ventas_subalternos = 0   
-        for c in context["subalternos"]:
-            if c.ventas_anteriores:
-                ventas_subalternos += int(c.ventas_anteriores)            
+        for c in subalternos:
 
-        print(ventas_subalternos)
+                total_subalterno = int(get_total_sales(c.numeroempleado))
+                c.total_ventas = total_subalterno
+                ventas_subalternos += total_subalterno
+
+        context["subalternos"] = subalternos
         context["ventas_subalternos"] = ventas_subalternos
 
         return render(request, "../templates/usuario/perfil.html", context)
+
 

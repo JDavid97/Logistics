@@ -71,7 +71,7 @@
                                     <td class="enlacesubalterno">
                                         <a a class="enlacesubalterno" href="{% url 'erp:home' %}{{subalterno.numeroempleado}}">{{subalterno.nombres}} {{subalterno.apellido_uno}}</a>
                                     </td>
-                                    <td>$ {{subalterno.ventas_anteriores}}</td>
+                                    <td>$ {{subalterno.total_ventas}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

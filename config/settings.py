@@ -87,18 +87,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd71gt1lgirpqta',
         'USER': 'ztptwxdtrlthrw',
         'PASSWORD': '3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083',
-        'HOST': '    postgres://ztptwxdtrlthrw:3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d71gt1lgirpqta',
+        'HOST': 'postgres://ztptwxdtrlthrw:3923ec4997e4eaeef5c4acf4875103607a344fca9b29f5dc0f400110e79b9083@ec2-18-206-20-102.compute-1.amazonaws.com:5432/d71gt1lgirpqta',
         'PORT': '5432'
     }
-}
+}"""
 
-"""DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'logistics1',
@@ -107,7 +107,7 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': ''
     }
-}"""
+}
 
 """DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)"""
